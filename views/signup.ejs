@@ -10,6 +10,8 @@
 
     <h1>Create my account!</h1>
 
+
+
     <form action="/signup" method="post">
     <div class = "row">
       <div class = "col-sm-4">
@@ -24,10 +26,20 @@
       <div class = "col-sm-4">
         <div class="form-group">
           <label for="email">My Email:</label>
-            <input type="text" class="form-control" id="username" placeholder="" name= "newUser[local][email]">
+            <input type="email" class="form-control" id="username" placeholder="" name= "newUser[local][email]">
         </div>
       </div>
     </div>
+
+    <% if (message.length > 0) { %>
+    <div class = "row">
+      <div class = "col-sm-3">
+      <p class= "text-danger">
+        <%= message %>
+      </p>
+      </div>
+    </div>
+    <% } %>
 
     <div class= "row">
       <div class = "col-sm-4">
@@ -36,7 +48,7 @@
               <input type="password" class="form-control" id="username" placeholder="" name= "newUser[local][password]">
         </div>
       </div>
-    
+
     </div>
 
     <button type="submit" class="btn btn-info">Sign me up</button>
