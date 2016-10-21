@@ -5,14 +5,10 @@ var bcrypt = require('bcrypt')
 var User = require('../models/user')
 
 router.get('/', function (req, res){
-  res.redirect('/login')
-})
-
-router.get('/login', function (req, res){
   res.render('login', {message: req.flash('errMessage')})
 })
 
-router.post('/login', function (req, res){
+router.post('/', function (req, res){
   var post_name = req.body.user.local.name
   // var post_pw = req.body.newUser.local.password
 
@@ -43,26 +39,10 @@ router.post('/login', function (req, res){
         res.redirect('/login')
       }
   })
+})
 
-
-
-  // console.log(savedPassword)
-
-  // var userLogIn = User.find
-
-  //  ({
-  //   local : {
-  //     name: post_name,
-  //     log_in_password: post_pw,
-  //     // password: savedPassword
-  //   }
-  // })
-
-  // console.log(userLogIn.local.password)
-  // userLogIn.save(function (err, user){
-    // if (err) console.log(err.message)
-  // })
-
+router.get('/profile', function (req, res){
+  res.render('profile', {message: req.flash('signupMessage')})
 })
 
 

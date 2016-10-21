@@ -6,12 +6,21 @@ var User = require('../models/user')
 
 require('../config/passport')(passport)
 
-router.get('/', function (req, res){
+function authCheck (req, res, next) {
+  if (req.isAuthenticated()){
+    req.flash('signupMessage', 'You are already logged in, log out first to sign up for a new account')
+    return res.redirect('/login/profile')
+  } else {
+    return next()
+  }
+}
+
+router.get('/', authCheck, function (req, res){
   res.render('signup', {message: req.flash('signupMessage')})
 })
 
 router.post('/', passport.authenticate('local-signup', {
-  successRedirect: '/profile',
+  successRedirect: '/login/profile',
   failureRedirect: '/signup',
   failureFlash: true
 }

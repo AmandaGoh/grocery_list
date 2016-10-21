@@ -43,8 +43,16 @@ app.use(passport.session())
 var login_route = require('./routes/login')
 var signup_route = require('./routes/signup')
 
+app.get('/', function (req, res){
+  res.redirect('/login')
+})
 
-app.use('/', login_route)
+app.get('/logout', function (req,res){
+  req.logout()
+  res.redirect('/login')
+})
+
+app.use('/login', login_route)
 app.use('/signup', signup_route)
 
 
