@@ -8,7 +8,7 @@ require('../config/passport')(passport)
 
 function authCheck (req, res, next) {
   if (req.isAuthenticated()){
-    req.flash('signupMessage', 'You are already logged in, log out first to sign up for a new account')
+    req.flash('logoutMessage', 'You are already logged in, log out first to sign up for a new account')
     return res.redirect('/login/profile')
   } else {
     return next()
@@ -16,7 +16,7 @@ function authCheck (req, res, next) {
 }
 
 router.get('/', authCheck, function (req, res){
-  res.render('signup', {message: req.flash('signupMessage')})
+  res.render('signup', {message: req.flash('errMessage')})
 })
 
 router.post('/', passport.authenticate('local-signup', {

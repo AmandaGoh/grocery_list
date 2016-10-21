@@ -21,7 +21,7 @@ module.exports = function (passport){
     passReqToCallback: true
   }, function(req, email, password, next){
     //the authentication flow on our local auth routes
-    console.log(email)
+    // console.log(email)
     User.findOne({'local.email': email}, function (err, foundUser){
       //if user is found, don't create new user
 
@@ -30,7 +30,7 @@ module.exports = function (passport){
       if(err) return next (err)
 
       if (foundUser) {
-        return next(null,false, req.flash('signupMessage', 'Email has been taken'))
+        return next(null,false, req.flash('errMessage', 'Email has been taken'))
       } else {
 
         User.create(req.body.newUser, function (err, user){
@@ -40,21 +40,39 @@ module.exports = function (passport){
             return next(null, user)
           }
         })
+      }
+    })
+  }))
 
-        // var newUser = new User({
-        //   local: {
-        //     name: req.body.user.local.name,
-        //     email: email,
-        //     password: password
-        //   }
-        // })
-        //
-        // newUser.save(function(err, newUser){
-        //   if (err) throw err
-        // })
+  passport.use('local-login', new LocalStrategy({
+    usernameField: 'user[local][email]',
+    passwordField: 'user[local][password]',
+    passReqToCallback: true
+  }, function(req, email, password, next){
+    console.log('authenticating login')
+
+    User.findOne({'local.email': email}, function (err, foundUser){
+
+      if(err) return next (err)
+
+      if (!foundUser) {
+        return next(null,false, req.flash('errMessage', 'User not found. Have you created an account yet?'))
       }
 
+      foundUser.authenticate(password, function (err, authenticated){
+        if (err) return next (err)
+
+        if (authenticated){
+          return next(null, foundUser, req.flash('loginMessage', 'What are you missing today ' + foundUser.local.name + '?'))
+        } else {
+          return next(null, false, req.flash('errMessage', 'Passwords don\'t match'))
+        }
+      })
+
+
     })
+
+
   }))
 }
 
