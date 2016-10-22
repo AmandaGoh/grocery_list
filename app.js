@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var flash = require('connect-flash')
 var session = require('express-session')
 var passport= require('passport')
-var expressValidator = require('express-validator')
+var expressLayouts = require('express-ejs-layouts')
 var MongoStore = require('connect-mongo')(session)
 
 var app= express()
@@ -23,7 +23,11 @@ app.use(bodyParser.urlencoded({
 
 require('./config/passport')(passport)
 
+app.use(express.static(__dirname + '/public'))
+
 app.set('view engine', 'ejs')
+app.use(expressLayouts)
+
 
 app.use(session({
   secret: process.env.EXPRESS_SECRET,
