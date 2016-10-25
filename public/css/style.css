@@ -13,3 +13,57 @@ body{
   text-decoration: none;
   font-size: 20px;
 }
+
+#grocery_list {
+  width: 550px;
+  height: 500px;
+  margin: 0 auto;
+  /*background: rgb(37, 122, 200);*/
+}
+
+.table.name{
+  width: 480px;
+  height: 50px;
+  background: rgb(7, 244, 194);
+  border: border: 1px solid black;
+  padding: 2%;
+  font-size: 20px;
+  float:left;
+  display: inline-block;
+}
+
+.table.qty{
+  width: 60px;
+  height: 50px;
+  background: rgb(248, 246, 249);
+  border: 1px solid black;
+  padding: 2%;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.line.name {
+  width: 480px;
+  height: 50px;
+  background: rgb(135, 210, 26);
+  border: 1px solid black;
+  padding: 2%;
+  font-size: 18px;
+  float: left;
+  display: inline-block;
+}
+
+.line.quantity{
+  width: 60px;
+  height: 50px;
+  background: rgb(198, 68, 219);
+  border: 1px solid black;
+  padding: 2%;
+  font-size: 18px;
+  display: inline-block;
+}
+
+a {
+  clear: both;
+  margin: 0 auto;
+}

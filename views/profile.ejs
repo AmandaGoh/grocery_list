@@ -1,11 +1,36 @@
-<% if (message.length > 0) { %>
-<div class = "row">
-  <div class = "col-sm-3">
-  <p class= "text-danger">
-    <%= message %>
-  </p>
-  </div>
+<div class = "err_message">
+    <% if (message.length > 0) { %>
+    <div class = "row">
+      <div class = "col-sm-3">
+      <p class= "text-danger">
+        <%= message %>
+      </p>
+      </div>
+    </div>
+    <% } %>
 </div>
-<% } %>
+
+<h1>Hi what would you like to add to the list?</h1>
+
+<div id="grocery_list">
+  <h2><%= groceryList.name %></h2>
+  <div contenteditable="true" class="table name">Items to Buy</div>
+  <div contenteditable="true" class="table qty">Qty</div>
+  <div contenteditable="true" class="line name one"></div>
+  <div contenteditable="true" class="line quantity one"></div>
+  <div contenteditable="true" class="line name two"></div>
+  <div contenteditable="true" class="line quantity two"></div>
+  <div contenteditable="true" class="line name three"></div>
+  <div contenteditable="true" class="line quantity three"></div>
+  <div contenteditable="true" class="line name four"></div>
+  <div contenteditable="true" class="line quantity four"></div>
+  <div contenteditable="true" class="line name five"></div>
+  <div contenteditable="true" class="line quantity five"></div>
+  <div contenteditable="true" class="line name six"></div>
+  <div contenteditable="true" class="line quantity six"></div>
+  <div contenteditable="true" class="line name seven"></div>
+  <div contenteditable="true" class="line quantity seven"></div>
+</div>
+
 
 <a href="/logout">Logout</a>

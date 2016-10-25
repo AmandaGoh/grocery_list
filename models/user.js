@@ -1,11 +1,16 @@
 var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 
+var GroceryList = require('./grocery_list')
+
 var userSchema = mongoose.Schema ({
   local: {
     name: String,
     email: String,
-    password: String
+    password: String,
+    groceryListID: [{
+      type: mongoose.Schema.Types.ObjectId
+    }]
   }
 })
 

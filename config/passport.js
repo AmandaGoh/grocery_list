@@ -2,6 +2,7 @@
 var LocalStrategy = require('passport-local').Strategy
 
 var User = require('../models/user')
+var GroceryList = require('../models/grocery_list')
 
 //define user!
 module.exports = function (passport){
@@ -21,26 +22,60 @@ module.exports = function (passport){
     passReqToCallback: true
   }, function(req, email, password, next){
     //the authentication flow on our local auth routes
-    // console.log(email)
     User.findOne({'local.email': email}, function (err, foundUser){
-      //if user is found, don't create new user
-
-      //if user not found,create new user
 
       if(err) return next (err)
 
       if (foundUser) {
         return next(null,false, req.flash('errMessage', 'Email has been taken'))
       } else {
+        var groceryListName = req.body.newGroceryList.name
 
-        User.create(req.body.newUser, function (err, user){
-          if (err) throw err
-          else {
-            console.log(req.body.newUser)
-            return next(null, user)
-          }
-        })
-      }
+        var userEmail = req.body.user.local.email
+
+      //referencing for joining someone's list
+        if(groceryListName.length === 0 && userEmail.length !== 0) {
+            var existingList = User.findOne({'local.email': req.body.user.local.email}, function (err, user){
+              // console.log(user.local.groceryListID)
+              var newUser = new User ({
+                local: {
+                  name: req.body.newUser.local.name,
+                  email: email,
+                  password: password,
+                  groceryListID: [user.local.groceryListID]
+                }
+              })
+              newUser.save(function (err, newUser){
+                return next (null, newUser)
+              })
+            })
+        //create new user with new grocery list
+        } else {
+          var newGroceryList = new GroceryList ({
+              name: groceryListName,
+              items: ['','','','','','','','','','']
+          })
+
+
+          newGroceryList.save(function (err, newList){
+            if (err) next (err)
+            var newGroceryListID = newGroceryList._id
+            var newUser = new User ({
+              local: {
+                name: req.body.newUser.local.name,
+                email: email,
+                password: password,
+                groceryListID: [newGroceryListID]
+              }
+            })
+            newUser.save(function (err, newUser){
+              return next (null, newUser)
+            })
+
+          })
+
+        }
+    }
     })
   }))
 
@@ -49,7 +84,7 @@ module.exports = function (passport){
     passwordField: 'user[local][password]',
     passReqToCallback: true
   }, function(req, email, password, next){
-    console.log('authenticating login')
+    // console.log('authenticating login')
 
     User.findOne({'local.email': email}, function (err, foundUser){
 
@@ -57,23 +92,20 @@ module.exports = function (passport){
 
       if (!foundUser) {
         return next(null,false, req.flash('errMessage', 'User not found. Have you created an account yet?'))
+      } else {
+        foundUser.authenticate(password, function (err, authenticated){
+          if (err) return next (err)
+
+          if (authenticated){
+            return next(null, foundUser, req.flash('loginMessage', 'What are you missing today ' + foundUser.local.name + '?'))
+          } else {
+            return next(null, false, req.flash('errMessage', 'Passwords don\'t match'))
+          }
+        })
+
       }
-
-      foundUser.authenticate(password, function (err, authenticated){
-        if (err) return next (err)
-
-        if (authenticated){
-          return next(null, foundUser, req.flash('loginMessage', 'What are you missing today ' + foundUser.local.name + '?'))
-        } else {
-          return next(null, false, req.flash('errMessage', 'Passwords don\'t match'))
-        }
-      })
-
-
     })
-
-
   }))
-}
 
-// can only take two fields (choose username or email)
+
+}
