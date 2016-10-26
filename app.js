@@ -65,5 +65,5 @@ app.use('/signup', signup_route)
 app.use('/api/list', ajax_route)
 
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
 console.log('local server running')
