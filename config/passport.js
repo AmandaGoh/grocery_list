@@ -71,6 +71,10 @@ module.exports = function (passport) {
               }
             })
             newUser.save(function (err, newUser) {
+              GroceryList.findById(newGroceryListID, function (err, groceryList) {
+                groceryList.user_ids.push(newUser._id)
+                groceryList.save()
+              })
               return next(null, newUser)
             })
           })

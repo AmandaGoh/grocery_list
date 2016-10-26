@@ -53,7 +53,9 @@ router.get('/profile/:id', function (req, res){
       User.find({
         '_id' : {'$in': groceryList.user_ids}}, function (err, user){
           user.forEach(function(user){
-            if (user.local.name !== req.user.name) {
+            // console.log(user.local.name)
+            // console.log(req.user)
+            if (user.local.name !== req.user.local.name) {
                 usernameArray.push(user.local.name)
             }
           })

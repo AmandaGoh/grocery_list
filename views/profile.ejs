@@ -21,21 +21,30 @@
 <div id="users_list">
   <h3>You are sharing this list with: </h3>
   <ul id= "users_list">
-    <li><%= usersArray[0] %></li>
-    <li><%= usersArray[1] %></li>
-    <li><%= usersArray[2] %></li>
+    <% usersArray.forEach(function (user){ %>
+        <% if (user) { %>
+          <li><%= user %></li>
+        <% } %>
+    <% }) %>
   </ul>
 </div>
 
 <div id="grocery_list">
-  <h2><%= groceryList.name %></h2>
+  <h4><%= groceryList.name %></h4>
+  <% if (groceryList.items[0] == '') {%>
   <div contenteditable="true" class="table name">Items to Buy</div>
-  <div contenteditable="true" class="table qty">Qty</div>
+      <div contenteditable="true" class="table qty">Qty</div>
+
+  <div contenteditable="true" class="line name"></div>
+      <div contenteditable="true" class="line quantity"></div>
+  <% } %>
   <% groceryList.items.forEach(function(item){ %>
     <% if (item) { %>
     <div contenteditable="true" class="line name"><%= item.name %></div>
         <div contenteditable="true" class="line quantity"><%= item.quantity %></div>
 
     <% } %>
+
+
   <% }) %>
 </div>

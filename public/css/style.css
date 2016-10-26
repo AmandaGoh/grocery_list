@@ -14,6 +14,14 @@ h2{
   text-align: center;
 }
 
+h4{
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  font-size: 3em;
+  color: #fff;
+  margin-top: 5%;
+}
+
 form{
   padding-left: 12%;
 }
@@ -59,13 +67,16 @@ a:hover{
 
 #grocery_list {
   width: 550px;
-  height: 500px;
-  margin: 0 auto;
-  /*background: rgb(37, 122, 200);*/
+  height: 600px;
+  margin: 1% auto;
+  background: url( "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9716934");
+  background-size:cover;
+  position: relative;
+  top: 2%;
 }
 
 .table.name{
-  width: 480px;
+  width: 430px;
   height: 50px;
   background: rgb(7, 244, 194);
   border: border: 1px solid black;
@@ -73,6 +84,8 @@ a:hover{
   font-size: 20px;
   float:left;
   display: inline-block;
+  margin-left: 30px;
+
 }
 
 .table.qty{
@@ -86,7 +99,7 @@ a:hover{
 }
 
 .line.name {
-  width: 480px;
+  width: 430px;
   height: 50px;
   background: rgb(135, 210, 26);
   border: 1px solid black;
@@ -94,6 +107,7 @@ a:hover{
   font-size: 18px;
   float: left;
   display: inline-block;
+  margin-left: 30px;
 }
 
 .line.quantity{
@@ -108,7 +122,6 @@ a:hover{
 
 a {
   margin: 1% 0 0 18%;
-  clear: both;
 }
 
 #users_list{

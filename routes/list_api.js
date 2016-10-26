@@ -17,7 +17,11 @@ router.post('/:id', function (req, res) {
       'quantity': itemQty
     })
 
-    groceryList.save()
+    groceryList.save(function(err) {
+      // handle the err
+
+      res.json('ok')
+    })
   // console.log(groceryList)
   })
 })
