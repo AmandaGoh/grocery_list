@@ -39,18 +39,40 @@ router.post('/', function (req, res, next){
 
 router.get('/profile/:id', function (req, res){
   // console.log(req.user)
-
   var id = req.params.id
+
   if (id === ':id') {
      res.render('profile', {message : req.flash('logoutMessage')})
   } else {
     GroceryList.findById(id, function(err, groceryList){
       // console.log(groceryList)
       if (err) return (err)
-      return res.render('profile', ({
-        groceryList : groceryList,
-        message: req.flash('logoutMessage')
-      }))
+      var usernameArray = []
+
+      // console.log(groceryList.user_ids)
+      User.find({
+        '_id' : {'$in': groceryList.user_ids}}, function (err, user){
+          user.forEach(function(user){
+            if (user.local.name !== req.user.name) {
+                usernameArray.push(user.local.name)
+            }
+          })
+          return res.render('profile', ({
+            groceryList : groceryList,
+            user: req.user.local.name,
+            usersArray: usernameArray,
+            message: req.flash('logoutMessage')
+          }))
+      })
+
+      // groceryList.user_ids.forEach(function(userid){
+      //   User.findById(userid, function(err, user){
+      //     usernameArray.push(user.local.name)
+      //   })
+      // })
+
+
+
     })
   }
 

@@ -7,32 +7,28 @@ $(document).ready(function($){
   var url = window.location.pathname
   var id = url.substring(url.lastIndexOf('/') + 1)
 
-  $line.on('keydown', function (e){
+  $groceryList.on('keydown', '.line' ,function (e){
     var key = e.which || e.keyCode
     if (key === 13) {
       // console.log('enter key works')
       e.preventDefault()
-      var index = $line.index(this) + 1
-      $line.eq(index).focus()
       saveDetails(this)
     }
   })
 
-    $line.on('keydown', function (e){
-      var key = e.which || e.keyCode
-      if (key === 9) {
-        // console.log('tab key works')
-        e.preventDefault()
-        var index = $line.index(this) + 1
-        $line.eq(index).focus()
-        saveDetails(this)
-        // console.log(this)
-      }
-    })
+  $groceryList.on('keydown', '.line', function (e){
+    var key = e.which || e.keyCode
+    if (key === 9) {
+      // console.log('tab key works')
+      e.preventDefault()
+      saveDetails(this)
+      // console.log(this)
+    }
+  })
     //focus on next div after pressing 'enter'
 
     function saveDetails(div) {
-      // console.log($(div).text())
+      console.log($(div).text())
       var $lineName = $('.line.name')
       var $lineQty = $('.line.quantity')
 
@@ -44,7 +40,6 @@ $(document).ready(function($){
 
         // console.log(qty)
 
-        // if (typeof(qty) === 'number') {
           $.post({
             url: '/api/list/' + id,
             data: {
@@ -52,7 +47,7 @@ $(document).ready(function($){
               'itemname': itemName,
               'itemquantity': qty
             }
-          })
+          }).then(focusNextTab(div))
 
       }
 
@@ -61,9 +56,7 @@ $(document).ready(function($){
         var index = $lineQty.index(div)
 
         var itemName = $($lineName[index]).text()
-        // console.log(index)
-        // var regex = /^[0-9]*$/
-        //  if(regex.test(qty) === true) {
+
            $.post({
              url: '/api/list/' + id,
              data: {
@@ -71,13 +64,28 @@ $(document).ready(function($){
                'itemname': itemName,
                'itemquantity': qty
              }
-           })
-        //  }
+           }).then(focusNextTab(div)).then(createNextLine())
 
       }
+    }
 
+    function createNextLine(){
+      var $lineName = $('<div>', {
+        "class": 'line name',
+        "contenteditable": true})
+      var $lineQty = $('<div>', {
+        "class": 'line quantity',
+        "contenteditable": true
+      })
+      $('#grocery_list').append($lineName)
+      $('#grocery_list').append($lineQty)
 
     }
 
+    function focusNextTab(div) {
+      console.log($('div#grocery_list div.line').index(div))
+      var index = $('div#grocery_list div.line').index(div) + 1
+      $('div#grocery_list div.line').eq(index).focus()
+    }
 
-})
+  })
