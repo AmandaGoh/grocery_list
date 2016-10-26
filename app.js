@@ -14,7 +14,10 @@ mongoose.Promise = global.Promise
 
 console.log('the environment is on '+ process.env.NODE_ENV)
 
-dotenv.load({path: '.env.' + process.env.NODE_ENV})
+if (process.env.NODE_ENV != 'production') {
+  dotenv.load({path: '.env.' + process.env.NODE_ENV})
+}
+
 mongoose.connect(process.env.MONGO_URI)
 
 app.use(bodyParser.urlencoded({
