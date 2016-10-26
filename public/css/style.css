@@ -79,7 +79,7 @@ a:hover{
   width: 430px;
   height: 50px;
   background: rgb(7, 244, 194);
-  border: border: 1px solid black;
+  /*border: border: 1px solid black;*/
   padding: 2%;
   font-size: 20px;
   float:left;
@@ -91,33 +91,35 @@ a:hover{
 .table.qty{
   width: 60px;
   height: 50px;
-  background: rgb(248, 246, 249);
-  border: 1px solid black;
+  background: rgb(7, 244, 194);
+  /*border: 1px solid black;*/
   padding: 2%;
-  font-size: 14px;
+  font-size: 20px;
   display: inline-block;
 }
 
 .line.name {
   width: 430px;
   height: 50px;
-  background: rgb(135, 210, 26);
-  border: 1px solid black;
+  /*background: rgb(135, 210, 26);*/
+  /*border: 1px solid black;*/
   padding: 2%;
   font-size: 18px;
   float: left;
   display: inline-block;
   margin-left: 30px;
+  color: #FFF;
 }
 
 .line.quantity{
   width: 60px;
   height: 50px;
-  background: rgb(198, 68, 219);
-  border: 1px solid black;
+  /*background: rgb(198, 68, 219);*/
+  /*border: 1px solid black;*/
   padding: 2%;
   font-size: 18px;
   display: inline-block;
+  color: #FFF;
 }
 
 a {

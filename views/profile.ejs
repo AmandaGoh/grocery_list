@@ -31,10 +31,10 @@
 
 <div id="grocery_list">
   <h4><%= groceryList.name %></h4>
-  <% if (groceryList.items[0] == '') {%>
   <div contenteditable="true" class="table name">Items to Buy</div>
       <div contenteditable="true" class="table qty">Qty</div>
 
+  <% if (groceryList.items[0] == '') {%>
   <div contenteditable="true" class="line name"></div>
       <div contenteditable="true" class="line quantity"></div>
   <% } %>
