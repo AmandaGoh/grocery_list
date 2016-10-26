@@ -38,7 +38,8 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore({
     url: process.env.MONGO_URI,
-    autoReconnect: true
+    autoReconnect: true,
+    mongooseConnection: mongoose.connection
   })
 }))
 app.use(flash())
