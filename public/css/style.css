@@ -177,6 +177,10 @@ a:hover{
   cursor: pointer;
 }
 
+.checkbox:hover{
+  transform: scale(1.2);
+}
+
 a {
   margin: 0 0 0 2%;
 }
