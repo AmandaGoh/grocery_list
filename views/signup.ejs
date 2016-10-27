@@ -1,73 +1,79 @@
 
     <div class = "container">
 
-    <h1>Create my account!</h1>
+    <h4 class="signup_header">Create my account!</h4>
 
 
+    <div class="signup">
 
-    <form action="/signup" method="post">
-    <div class = "row">
-      <div class = "col-sm-4">
-        <div class="form-group">
-          <label for="name">My Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="" name= "newUser[local][name]">
+      <form action="/signup" method="post">
+        <div class = "row">
+          <div class = "col-sm-6">
+            <div class="form-group">
+              <label for="name">My Username:</label>
+              <input type="text" class="form-control" id="username" placeholder="" name= "newUser[local][name]">
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class = "row">
-      <div class = "col-sm-4">
-        <div class="form-group">
-          <label for="email">My Email:</label>
-            <input type="email" class="form-control" id="username" placeholder="" name= "newUser[local][email]">
+        <div class = "row">
+          <div class = "col-sm-6">
+            <div class="form-group">
+              <label for="email">My Email:</label>
+              <input type="email" class="form-control" id="username" placeholder="" name= "newUser[local][email]">
+            </div>
+          </div>
         </div>
-      </div>
+
+        <% if (message.length > 0) { %>
+          <div class = "row">
+          <div class = "col-sm-6">
+          <p class= "text-danger">
+          <%= message %>
+          </p>
+          </div>
+          </div>
+          <% } %>
+
+          <div class= "row">
+            <div class = "col-sm-6">
+              <div class="form-group">
+                <label for="password">Your Password:</label>
+                <input type="password" class="form-control" id="username" placeholder="" name= "newUser[local][password]">
+              </div>
+            </div>
+          </div>
     </div>
 
-    <% if (message.length > 0) { %>
-    <div class = "row">
-      <div class = "col-sm-3">
-      <p class= "text-danger">
-        <%= message %>
-      </p>
-      </div>
-    </div>
-    <% } %>
+    <div class="signup_wrapper one">
+      <h5>You can create a list now</h5>
 
-    <div class= "row">
-      <div class = "col-sm-4">
-        <div class="form-group">
-            <label for="password">Your Password</label>
-              <input type="password" class="form-control" id="username" placeholder="" name= "newUser[local][password]">
-        </div>
-      </div>
-    </div>
-
-    <h2>You can create a list now</h2>
-
-    <div class= "row">
-      <div class = "col-sm-4">
-        <div class="form-group">
+      <div class= "row">
+        <div class = "col-sm-12">
+          <div class="form-group">
             <label for="grocery_list">Give your grocery list a name:</label>
-              <input type="text" class="form-control" id="list_name" placeholder="" name= "newGroceryList[name]">
+            <input type="text" class="form-control" id="list_name" placeholder="" name= "newGroceryList[name]">
+          </div>
         </div>
       </div>
     </div>
-
-    <h2>OR</h2>
-
-    <h3>Joining a list?</h3>
+  <div class="signup_wrapper two">
+    <h6>OR</h6>
+  </div>
+  <div class="signup_wrapper three">
+    <h5>Joining a list?</h5>
 
     <div class= "row">
-      <div class = "col-sm-4">
+      <div class = "col-sm-12">
         <div class="form-group">
-            <label for="grocery_list">Find my grocery buddy:</label>
-              <input type="email" class="form-control" id="list_name" placeholder="Your buddy's email" name= "user[local][email]">
+          <label for="grocery_list">Find my grocery buddy:</label>
+          <input type="email" class="form-control" id="list_name" placeholder="Your buddy's email" name= "user[local][email]">
         </div>
       </div>
     </div>
+  </div>
 
-    <button type="submit" class="btn btn-success">Sign me up</button>
+    <button type="submit" class="btn btn-success btn-lg">Sign me up</button>
     </form>
 
     </div>

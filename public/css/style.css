@@ -1,6 +1,7 @@
 body{
   background: url("../img/store_background.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1{
@@ -14,6 +15,16 @@ h2{
   text-align: center;
 }
 
+h3{
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 1.2em;
+}
+
+ul li{
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 1.1em;
+}
+
 h4{
   font-family: 'Permanent Marker', cursive;
   text-align: center;
@@ -22,12 +33,21 @@ h4{
   margin-top: 5%;
 }
 
+h4.signup_header{
+  color: #fb4f05;
+}
+
 form{
   padding-left: 12%;
 }
 
+form.signup{
+  text-align: center;
+  /*margin-left: 22% !important;*/
+}
+
 button{
-  margin: 0 0 0 35%;
+  margin: 0 0 0 45%;
 }
 
 #name{
@@ -65,10 +85,17 @@ a:hover{
   color: rgb(7, 163, 240) !important;
 }
 
+#users_list{
+  padding: 1%;
+  background: rgba(207, 237, 20, 0.5);
+  border-radius: 10px;
+}
+
 #grocery_list {
   width: 650px;
   height: 650px;
-  margin: 1% auto;
+  margin: 2% auto;
+  margin-left: 3% !important;
   background: url( "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9716934");
   background-size:cover;
   /*position: relative;*/
@@ -86,10 +113,11 @@ a:hover{
 .table.name{
   width: 430px;
   height: 40px;
-  background: rgb(7, 244, 194);
   /*border: border: 1px solid black;*/
   padding: 2%;
-  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Permanent Marker', cursive;
+  color: rgb(11, 244, 170);
   display: inline-block;
   margin-left: 40px;
   float:left;
@@ -98,10 +126,11 @@ a:hover{
 .table.qty{
   width: 80px;
   height: 40px;
-  background: rgb(7, 244, 194);
   /*border: 1px solid black;*/
   padding: 2%;
-  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Permanent Marker', cursive;
+  color: rgb(11, 244, 170);
   display: inline-block;
   float:left;
 }
@@ -109,9 +138,9 @@ a:hover{
 .line.name {
   width: 430px;
   height: 40px;
-  background: rgb(135, 210, 26);
+  /*background: rgb(135, 210, 26);*/
   /*border: 1px solid black;*/
-  /*padding: 2%;*/
+  padding: 2%;
   font-size: 18px;
   display: inline-block;
   color: #FFF;
@@ -123,7 +152,7 @@ a:hover{
 .line.quantity{
   width: 80px;
   height: 40px;
-  background: rgb(198, 68, 219);
+  /*background: rgb(198, 68, 219);*/
   /*border: 1px solid black;*/
   padding: 2%;
   font-size: 18px;
@@ -138,14 +167,14 @@ a:hover{
   display: inline-block;
   float: left;
   margin: 0;
-  background: url("https://pixabay.com/static/uploads/photo/2014/04/02/11/01/check-305228_960_720.png");
+  background: url("../img/tick.png");
   background-size: 40px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
 
 a {
-  margin: 1% 0 0 18%;
+  margin: 0 0 0 2%;
 }
 
 #users_list{
@@ -159,4 +188,57 @@ a {
 #grocery_list{
   display: inline-block;
   margin-left: 6%;
+}
+
+label{
+  font-size: 1.3em;
+  text-align: center;
+}
+
+h6{
+  text-align: center;
+  font-family: 'Amaranth', sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  color: #fb4f05;
+}
+
+h5{
+  font-family: 'Amaranth', sans-serif;
+  font-weight: bold;
+  font-size: 1.8em;
+  text-align: center;
+  color: #fb4f05;
+}
+
+.signup form{
+    margin-top: 4%;
+    margin-left: 22%;
+    text-align: center;
+}
+
+.signup_wrapper.one{
+  float:left;
+  display:inline-block;
+  width: 300px;
+  height: 150px;
+  margin-left: 22%;
+  padding: 1%;
+  /*background: rgb(25, 201, 43);*/
+}
+
+.signup_wrapper.two{
+  display: inline-block;
+  width: 100px;
+  height: 150px;
+  float: left;
+  /*background: rgb(12, 166, 240);*/
+}
+
+.signup_wrapper.three{
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  padding: 1%;
+  /*background: rgb(25, 201, 43);*/
 }

@@ -85,13 +85,14 @@ $(document).ready(function($){
              }
            })
            .done(
-             focusNextTab(div, createNextLine)
+            //  focusNextTab(div, createNextLine)
+            createNextLine(div, focusNextTab)
            )
 
       }
     }
 
-    function createNextLine(div){
+    function createNextLine(div, cb){
       // console.log($(div).is($('div.quantity:last')))
       if ( $(div).is($('div.quantity:last'))){
         var $lineName = $('<div>', {
@@ -108,15 +109,14 @@ $(document).ready(function($){
           $('#grocery_list').append($lineQty)
           $('#grocery_list').append($checkBox)
       }
-
+      cb(div)
     }
 
-    function focusNextTab(div, cb) {
+    function focusNextTab(div) {
       // console.log($('div#grocery_list div.line').index(div))
       var index = $('div#grocery_list div.line').index(div) + 1
       $('div#grocery_list div.line').eq(index).focus()
 
-      cb(div)
     }
 
 

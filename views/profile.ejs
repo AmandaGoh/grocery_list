@@ -10,9 +10,9 @@
 </div>
 <% } %>
 
-<h1>Hi <i><%= user %></i>, what would you like to add to the list?</h1>
-
+<h1>Hi <i><%= user %></i>, what would you like to add to the list?
 <a href="/logout" class="btn btn-warning btn-lg">Not you? Log Out</a>
+</h1>
 
 <%# <form action="/logout">
   <input type="Submit" value="Not you? Log Out."/>
@@ -20,7 +20,7 @@
 
 <div id="users_list">
   <h3>You are sharing this list with: </h3>
-  <ul id= "users_list">
+  <ul>
     <% usersArray.forEach(function (user){ %>
         <% if (user) { %>
           <li><%= user %></li>
