@@ -50,6 +50,10 @@ button{
   margin: 0 0 0 45%;
 }
 
+#login{
+  margin-left: 33%;
+}
+
 #name{
   font-family: 'Permanent Marker', cursive;
   font-size: 5em;
@@ -96,7 +100,7 @@ a:hover{
   height: 650px;
   margin: 2% auto;
   margin-left: 3% !important;
-  background: url( "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9716934");
+  background: url( "../img/chalkboard.jpeg");
   background-size:cover;
   /*position: relative;*/
   /*top: 2%;*/
