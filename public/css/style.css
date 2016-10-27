@@ -66,60 +66,82 @@ a:hover{
 }
 
 #grocery_list {
-  width: 550px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   margin: 1% auto;
   background: url( "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9716934");
   background-size:cover;
-  position: relative;
-  top: 2%;
+  /*position: relative;*/
+  /*top: 2%;*/
+}
+
+.empty{
+  width: 70px;
+  height: 40px;
+  /*background: rgb(98, 199, 23);*/
+  padding: 2%;
+  display: inline-block;
 }
 
 .table.name{
   width: 430px;
-  height: 50px;
+  height: 40px;
   background: rgb(7, 244, 194);
   /*border: border: 1px solid black;*/
   padding: 2%;
   font-size: 20px;
-  float:left;
   display: inline-block;
-  margin-left: 30px;
-
+  margin-left: 40px;
+  float:left;
 }
 
 .table.qty{
-  width: 60px;
-  height: 50px;
+  width: 80px;
+  height: 40px;
   background: rgb(7, 244, 194);
   /*border: 1px solid black;*/
   padding: 2%;
   font-size: 20px;
   display: inline-block;
+  float:left;
 }
 
 .line.name {
   width: 430px;
-  height: 50px;
-  /*background: rgb(135, 210, 26);*/
+  height: 40px;
+  background: rgb(135, 210, 26);
   /*border: 1px solid black;*/
-  padding: 2%;
+  /*padding: 2%;*/
   font-size: 18px;
-  float: left;
   display: inline-block;
-  margin-left: 30px;
   color: #FFF;
+  clear: left;
+  margin-left: 40px;
+  float: left;
 }
 
 .line.quantity{
-  width: 60px;
-  height: 50px;
-  /*background: rgb(198, 68, 219);*/
+  width: 80px;
+  height: 40px;
+  background: rgb(198, 68, 219);
   /*border: 1px solid black;*/
   padding: 2%;
   font-size: 18px;
   display: inline-block;
   color: #FFF;
+  float: left;
+}
+
+.checkbox{
+  width: 70px;
+  height: 40px;
+  display: inline-block;
+  float: left;
+  margin: 0;
+  background: url("https://pixabay.com/static/uploads/photo/2014/04/02/11/01/check-305228_960_720.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 a {
@@ -131,6 +153,7 @@ a {
   float: left;
   margin-top: 10%;
   margin-left: 4%;
+  font-size: 1.5em;
 }
 
 #grocery_list{

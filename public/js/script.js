@@ -25,7 +25,26 @@ $(document).ready(function($){
       // console.log(this)
     }
   })
-    //focus on next div after pressing 'enter'
+
+  $groceryList.on('click', '.checkbox', function (){
+    deleteDetails(this)
+  })
+
+    function deleteDetails(div){
+      var index = $('div#grocery_list div.checkbox').index(div)
+
+      $('div.line.name').eq(index).text('')
+      $('div.line.quantity').eq(index).text('')
+
+      $.post({
+        url: '/api/list/' + id,
+        data: {
+          'itemNo': index,
+          'itemname': '',
+          'itemquantity': 0
+        }
+      })
+    }
 
     function saveDetails(div) {
       // console.log($(div).text())
@@ -73,8 +92,8 @@ $(document).ready(function($){
     }
 
     function createNextLine(div){
-      // console.log($(div).is(':last-child'))
-      if ( $(div).is(':last-child')){
+      // console.log($(div).is($('div.quantity:last')))
+      if ( $(div).is($('div.quantity:last'))){
         var $lineName = $('<div>', {
           "class": 'line name',
           "contenteditable": true})
@@ -82,8 +101,12 @@ $(document).ready(function($){
             "class": 'line quantity',
             "contenteditable": true
           })
+          var $checkBox = $('<div>',{
+            "class": 'checkbox'
+          })
           $('#grocery_list').append($lineName)
           $('#grocery_list').append($lineQty)
+          $('#grocery_list').append($checkBox)
       }
 
     }
@@ -95,5 +118,6 @@ $(document).ready(function($){
 
       cb(div)
     }
+
 
   })

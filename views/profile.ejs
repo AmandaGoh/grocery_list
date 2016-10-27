@@ -31,18 +31,20 @@
 
 <div id="grocery_list">
   <h4><%= groceryList.name %></h4>
-  <div contenteditable="true" class="table name">Items to Buy</div>
-      <div contenteditable="true" class="table qty">Qty</div>
+    <div contenteditable="true" class="table name">Items to Buy</div>
+    <div contenteditable="true" class="table qty">Qty</div>
+    <div class="empty"></div>
 
   <% if (groceryList.items[0] == '') {%>
-  <div contenteditable="true" class="line name"></div>
-      <div contenteditable="true" class="line quantity"></div>
+    <div contenteditable="true" class="line name">Enter item here</div>
+        <div contenteditable="true" class="line quantity">Qty</div>
+            <div class="checkbox"></div>
   <% } %>
   <% groceryList.items.forEach(function(item){ %>
     <% if (item) { %>
-    <div contenteditable="true" class="line name"><%= item.name %></div>
-        <div contenteditable="true" class="line quantity"><%= item.quantity %></div>
-
+      <div contenteditable="true" class="line name"><%= item.name %></div>
+          <div contenteditable="true" class="line quantity"><%= item.quantity %></div>
+              <div class="checkbox"></div>
     <% } %>
 
 
