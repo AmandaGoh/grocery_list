@@ -3,9 +3,22 @@ $(document).ready(function($){
   var $line = $('.line')
   var $lineItemName = $('.line.name')
   var $groceryList = $('#grocery_list')
+  var $createList = $('.create_newlist')
 
   var url = window.location.pathname
   var id = url.substring(url.lastIndexOf('/') + 1)
+
+  //adding additional grocery lists
+  $createList.on('submit', function(e){
+    e.preventDefault()
+
+    var formdata = $(this).serializeArray()
+
+    $.post({
+      url: '/api/list/new',
+      data: formdata
+    })
+  })
 
   $groceryList.on('keypress', '.line' ,function (e){
     var key = e.which || e.keyCode
@@ -19,7 +32,7 @@ $(document).ready(function($){
   $groceryList.on('keydown', '.line', function (e){
     var key = e.which || e.keyCode
     if (key === 9) {
-      console.log('tab key works')
+      // console.log('tab key works')
       e.preventDefault()
       saveDetails(this)
       // console.log(this)

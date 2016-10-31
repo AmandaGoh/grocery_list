@@ -22,7 +22,9 @@ module.exports = function (passport) {
   }, function (req, email, password, next) {
     // the authentication flow on our local auth routes
     User.findOne({'local.email': email}, function (err, foundUser) {
-      if (err) return next(err)
+      if (err) {
+        return next(err)
+      }
 
       if (foundUser) {
         return next(null, false, req.flash('errMessage', 'Email has been taken'))
@@ -60,7 +62,7 @@ module.exports = function (passport) {
           })
 
           newGroceryList.save(function (err, newList) {
-            if (err) next(err)
+            if (err) return next(err)
             var newGroceryListID = newGroceryList._id
             var newUser = new User({
               local: {
@@ -71,6 +73,8 @@ module.exports = function (passport) {
               }
             })
             newUser.save(function (err, newUser) {
+              if (err) return next(err, req.flash('errMessage', err.errors))
+
               GroceryList.findById(newGroceryListID, function (err, groceryList) {
                 groceryList.user_ids.push(newUser._id)
                 groceryList.save()

@@ -14,13 +14,31 @@ function authCheck (req, res, next) {
 }
 
 router.get('/', authCheck, function (req, res){
-  res.render('signup', {message: req.flash('errMessage')})
+  res.render('signup', {message: req.flash('errMessage')
+  })
 })
 
 router.post('/', function (req, res, next) {
   passport.authenticate('local-signup' , function (err, user, info){
-    if (err) {return next (err) }
-    if (!user) { return res.redirect ('/signup') }
+    if (err) {
+      // console.log(err.errors['local.password'].message)
+      // return res.redirect('/signup')
+      return res.render('signup', {
+        message: err.errors['local.password'].message
+      })
+    }
+    if (!user) {
+      if (info){
+        return res.render('signup', {
+          message: info.message
+        })
+      } else {
+        return res.redirect('/signup')
+      }
+        // message: req.flash('errMessage')
+
+      // return res.redirect('/signup')
+    }
     req.logIn(user, { session: true }, function (err){
       if (err) {return next (err)}
       return res.redirect('/login/profile/' + user.local.groceryListID[0])

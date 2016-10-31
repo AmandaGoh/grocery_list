@@ -14,39 +14,49 @@
 <a href="/logout" class="btn btn-warning btn-lg">Not you? Log Out</a>
 </h1>
 
-<%# <form action="/logout">
-  <input type="Submit" value="Not you? Log Out."/>
-<form>%>
+<div class="profile_container">
+    <div class="profile_wrapper one">
+    <%# <div class = "col-sm-3">%>
+      <form class="create_newlist">
+          <label for="name">Add another list:</label>
+          <input type="text" name="newGroceryList[name]" placeholder="Name your list!">
+          <button type="submit" class="btn btn-success btn-s">Create list!</button>
+      </form>
+    <%# </div>%>
 
-<div id="users_list">
-  <h3>You are sharing this list with: </h3>
-  <ul>
-    <% usersArray.forEach(function (user){ %>
-        <% if (user) { %>
-          <li><%= user %></li>
-        <% } %>
-    <% }) %>
-  </ul>
-</div>
+      <div id="users_list">
+        <h3>You are sharing this list with: </h3>
+        <ul>
+          <% usersArray.forEach(function (user){ %>
+              <% if (user) { %>
+                <li><%= user %></li>
+              <% } %>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
 
-<div id="grocery_list">
-  <h4><%= groceryList.name %></h4>
-    <div contenteditable="true" class="table name">Items to Buy</div>
-    <div contenteditable="true" class="table qty">Qty</div>
-    <div class="empty"></div>
+    <div class="profile_wrapper two">
+        <div id="grocery_list">
+          <h4><%= groceryList.name %></h4>
+            <div contenteditable="true" class="table name">Items to Buy</div>
+            <div contenteditable="true" class="table qty">Qty</div>
+            <div class="empty"></div>
 
-  <% if (groceryList.items[0] == '') {%>
-    <div contenteditable="true" class="line name">Enter item here</div>
-        <div contenteditable="true" class="line quantity">Qty</div>
-            <div class="checkbox"></div>
-  <% } %>
-  <% groceryList.items.forEach(function(item){ %>
-    <% if (item) { %>
-      <div contenteditable="true" class="line name"><%= item.name %></div>
-          <div contenteditable="true" class="line quantity"><%= item.quantity %></div>
-              <div class="checkbox"></div>
-    <% } %>
+          <% if (groceryList.items[0] == '') {%>
+            <div contenteditable="true" class="line name">Enter item here</div>
+                <div contenteditable="true" class="line quantity">Qty</div>
+                    <div class="checkbox"></div>
+          <% } %>
+          <% groceryList.items.forEach(function(item){ %>
+            <% if (item) { %>
+              <div contenteditable="true" class="line name"><%= item.name %></div>
+                  <div contenteditable="true" class="line quantity"><%= item.quantity %></div>
+                      <div class="checkbox"></div>
+            <% } %>
 
 
-  <% }) %>
+          <% }) %>
+        </div>
+    </div>
 </div>

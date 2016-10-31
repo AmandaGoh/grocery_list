@@ -5,9 +5,19 @@ var GroceryList = require('./grocery_list')
 
 var userSchema = mongoose.Schema ({
   local: {
-    name: String,
-    email: String,
-    password: String,
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: [5, 'Password should be greater than 5 characters']
+    },
     groceryListID: [{
       type: mongoose.Schema.Types.ObjectId
     }]
